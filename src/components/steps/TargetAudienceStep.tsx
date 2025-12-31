@@ -72,17 +72,17 @@ export function TargetAudienceStep({ data, onDataUpdate }: TargetAudienceStepPro
   }, [watch, onDataUpdate]);
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <label htmlFor="ageRange" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="ageRange" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Primary Age Range *
           </label>
           <select
             {...register('demographics.ageRange', { required: true })}
-            className="form-select"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           >
-            <option value="">Select age range</option>
+            <option value="" className="text-[#CBD5E1]">Select age range</option>
             {AGE_RANGES.map(range => (
               <option key={range} value={range}>{range}</option>
             ))}
@@ -90,14 +90,14 @@ export function TargetAudienceStep({ data, onDataUpdate }: TargetAudienceStepPro
         </div>
 
         <div>
-          <label htmlFor="incomeLevel" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="incomeLevel" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Income Level *
           </label>
           <select
             {...register('demographics.incomeLevel', { required: true })}
-            className="form-select"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           >
-            <option value="">Select income level</option>
+            <option value="" className="text-[#CBD5E1]">Select income level</option>
             {INCOME_LEVELS.map(level => (
               <option key={level} value={level}>{level}</option>
             ))}
@@ -106,67 +106,67 @@ export function TargetAudienceStep({ data, onDataUpdate }: TargetAudienceStepPro
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Gender *
         </label>
         <div className="grid grid-cols-2 gap-3">
           {GENDERS.map(gender => (
-            <label key={gender} className="flex items-center">
+            <label key={gender} className="flex items-center p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
               <input
                 type="checkbox"
                 {...register('demographics.gender')}
                 value={gender}
-                className="form-checkbox"
+                className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
               />
-              <span className="ml-2">{gender}</span>
+              <span className="ml-3 text-[#F9FAFB]">{gender}</span>
             </label>
           ))}
         </div>
       </div>
 
       <div>
-        <label htmlFor="location" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="location" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           Customer Location *
         </label>
         <input
           type="text"
           {...register('location', { required: true })}
           placeholder="e.g., Local area, nationwide, specific cities"
-          className="form-input"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Customer Interests *
         </label>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {COMMON_INTERESTS.map(interest => (
-            <label key={interest} className="flex items-center">
+            <label key={interest} className="flex items-center p-3 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
               <input
                 type="checkbox"
                 {...register('interests')}
                 value={interest}
-                className="form-checkbox"
+                className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
               />
-              <span className="ml-2 text-sm">{interest}</span>
+              <span className="ml-3 text-sm text-[#F9FAFB]">{interest}</span>
             </label>
           ))}
         </div>
-        <p className="text-xs text-secondary-500 mt-2">
+        <p className="text-xs text-[#CBD5E1]/60 mt-3">
           Select interests that align with your target customers
         </p>
       </div>
 
       <div>
-        <label htmlFor="buyingFrequency" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="buyingFrequency" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           How often do they typically buy your type of product/service? *
         </label>
         <select
           {...register('buyingFrequency', { required: true })}
-          className="form-select"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
         >
-          <option value="">Select buying frequency</option>
+          <option value="" className="text-[#CBD5E1]">Select buying frequency</option>
           {BUYING_FREQUENCIES.map(freq => (
             <option key={freq.value} value={freq.value}>{freq.label}</option>
           ))}

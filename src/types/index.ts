@@ -95,3 +95,53 @@ export interface StepConfig {
   title: string;
   description: string;
 }
+
+// Strategy Generator Types
+export interface MarketingPillar {
+  name: string;
+  goal: string;
+}
+
+export interface ContentCategory {
+  category: string;
+  examples: string[];
+}
+
+export interface BudgetSplit {
+  paid_ads: number;
+  content_creation: number;
+  influencers: number;
+  tools: number;
+}
+
+export interface CopywritingStyle {
+  tone: 'professional' | 'friendly' | 'casual' | 'aspirational' | 'educational' | 'playful';
+  language_mix: 'english_only' | 'sinhala_only' | 'mixed_english_primary' | 'mixed_sinhala_primary' | 'balanced';
+}
+
+export interface AdsVsOrganic {
+  recommended_ratio: string;
+  reason: string;
+}
+
+export interface MarketingStrategy {
+  marketing_pillars: MarketingPillar[];
+  content_categories: ContentCategory[];
+  platform_strategy: Record<string, string>;
+  budget_split: BudgetSplit;
+  copywriting_style: CopywritingStyle;
+  ads_vs_organic: AdsVsOrganic;
+}
+
+export interface StrategyGenerationMetadata {
+  generation_time_ms: number;
+  llm_provider: string;
+  model: string;
+}
+
+export interface StrategyGenerationResult {
+  success: boolean;
+  strategy?: MarketingStrategy;
+  error?: string;
+  metadata?: StrategyGenerationMetadata;
+}

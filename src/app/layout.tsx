@@ -1,12 +1,23 @@
 import '../styles/globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Montserrat, Poppins } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ 
+  subsets: ['latin'],
+  variable: '--font-montserrat',
+  display: 'swap',
+})
+
+const poppins = Poppins({ 
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-poppins',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
-  title: 'Marketing Strategy Recommender',
-  description: 'Get personalized marketing strategies for your business',
+  title: 'Serendib AI - AI-Powered Marketing Optimizer',
+  description: 'AI-powered marketing optimization platform with strategy recommendations, content generation, and campaign predictions',
 }
 
 export default function RootLayout({
@@ -16,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${montserrat.variable} ${poppins.variable} font-sans`}>{children}</body>
     </html>
   )
 }

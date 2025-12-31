@@ -54,17 +54,17 @@ export function BusinessProfileStep({ data, onDataUpdate }: BusinessProfileStepP
   }, [watch, onDataUpdate]);
 
   return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <label htmlFor="businessType" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="businessType" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Business Type / Industry *
           </label>
           <select
             {...register('businessType', { required: true })}
-            className="form-select"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           >
-            <option value="">Select business type</option>
+            <option value="" className="text-[#CBD5E1]">Select business type</option>
             {BUSINESS_TYPES.map(type => (
               <option key={type} value={type}>{type}</option>
             ))}
@@ -72,28 +72,28 @@ export function BusinessProfileStep({ data, onDataUpdate }: BusinessProfileStepP
         </div>
 
         <div>
-          <label htmlFor="industry" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="industry" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Specific Industry (Optional)
           </label>
           <input
             type="text"
             {...register('industry')}
             placeholder="e.g., Italian Restaurant, Fashion Retail"
-            className="form-input"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           />
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <label htmlFor="businessSize" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="businessSize" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Business Size *
           </label>
           <select
             {...register('businessSize', { required: true })}
-            className="form-select"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           >
-            <option value="">Select business size</option>
+            <option value="" className="text-[#CBD5E1]">Select business size</option>
             {BUSINESS_SIZES.map(size => (
               <option key={size.value} value={size.value}>{size.label}</option>
             ))}
@@ -101,14 +101,14 @@ export function BusinessProfileStep({ data, onDataUpdate }: BusinessProfileStepP
         </div>
 
         <div>
-          <label htmlFor="businessStage" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="businessStage" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Business Stage *
           </label>
           <select
             {...register('businessStage', { required: true })}
-            className="form-select"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           >
-            <option value="">Select business stage</option>
+            <option value="" className="text-[#CBD5E1]">Select business stage</option>
             {BUSINESS_STAGES.map(stage => (
               <option key={stage.value} value={stage.value}>{stage.label}</option>
             ))}
@@ -116,53 +116,53 @@ export function BusinessProfileStep({ data, onDataUpdate }: BusinessProfileStepP
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <label htmlFor="city" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="city" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             City *
           </label>
           <input
             type="text"
             {...register('location.city', { required: true })}
             placeholder="Your city"
-            className="form-input"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           />
         </div>
 
         <div>
-          <label htmlFor="district" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="district" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             District/Area
           </label>
           <input
             type="text"
             {...register('location.district')}
             placeholder="District or area"
-            className="form-input"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all"
           />
         </div>
       </div>
 
       <div>
-        <label htmlFor="productsServices" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="productsServices" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           Products / Services Description *
         </label>
         <textarea
           {...register('productsServices', { required: true })}
-          rows={3}
+          rows={4}
           placeholder="Briefly describe what you sell or offer"
-          className="form-textarea"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
         />
       </div>
 
       <div>
-        <label htmlFor="uniqueSellingProposition" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="uniqueSellingProposition" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           Unique Selling Proposition (USP) *
         </label>
         <textarea
           {...register('uniqueSellingProposition', { required: true })}
-          rows={3}
+          rows={4}
           placeholder="What makes your business different from competitors?"
-          className="form-textarea"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
         />
       </div>
     </div>

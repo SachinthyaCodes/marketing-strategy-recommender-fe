@@ -7,9 +7,11 @@ interface ReviewStepProps {
   data: Partial<MarketingStrategyFormData>;
   onSubmit: () => void;
   isSubmitting: boolean;
+  processingStatus?: string;
+  processingResult?: any;
 }
 
-export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
+export function ReviewStep({ data, onSubmit, isSubmitting, processingStatus, processingResult }: ReviewStepProps) {
   const getCompletionStatus = () => {
     const sections = [
       { name: 'Business Profile', data: data.businessprofile },
@@ -32,7 +34,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
   const renderSectionSummary = (sectionName: string, sectionData: any) => {
     if (!sectionData || Object.keys(sectionData).length === 0) {
       return (
-        <div className="flex items-center text-warning-600">
+        <div className="flex items-center text-yellow-500">
           <AlertCircle className="w-4 h-4 mr-2" />
           <span className="text-sm">Incomplete</span>
         </div>
@@ -40,7 +42,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
     }
 
     return (
-      <div className="flex items-center text-success-600">
+      <div className="flex items-center text-[#22C55E]">
         <CheckCircle className="w-4 h-4 mr-2" />
         <span className="text-sm">Complete</span>
       </div>
@@ -50,7 +52,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
   const formatBusinessProfile = (data: any) => {
     if (!data) return null;
     return (
-      <div className="space-y-2 text-sm text-secondary-600">
+      <div className="space-y-2 text-sm text-[#CBD5E1]">
         <p><strong>Business:</strong> {data.businessType} {data.industry && `- ${data.industry}`}</p>
         <p><strong>Size:</strong> {data.businessSize}</p>
         <p><strong>Stage:</strong> {data.businessStage}</p>
@@ -69,7 +71,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
         : [];
     
     return (
-      <div className="space-y-2 text-sm text-secondary-600">
+      <div className="space-y-2 text-sm text-[#CBD5E1]">
         <p><strong>Budget:</strong> {data.monthlyBudget}</p>
         <p><strong>Team:</strong> {data.hasMarketingTeam === 'true' ? `Yes (${data.teamSize || 'size not specified'})` : 'Solo'}</p>
         <p><strong>Capabilities:</strong> {contentCapacity.length > 0 ? contentCapacity.join(', ') : 'Not specified'}</p>
@@ -87,7 +89,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
         : [];
     
     return (
-      <div className="space-y-2 text-sm text-secondary-600">
+      <div className="space-y-2 text-sm text-[#CBD5E1]">
         <p><strong>Primary Goal:</strong> {data.primaryGoal?.replace('-', ' ')}</p>
         {secondaryGoals.length > 0 && (
           <p><strong>Secondary Goals:</strong> {secondaryGoals.join(', ')}</p>
@@ -106,7 +108,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
         : [];
     
     return (
-      <div className="space-y-2 text-sm text-secondary-600">
+      <div className="space-y-2 text-sm text-[#CBD5E1]">
         <p><strong>Age:</strong> {data.demographics?.ageRange}</p>
         <p><strong>Gender:</strong> {genders.length > 0 ? genders.join(', ') : 'Not specified'}</p>
         <p><strong>Income:</strong> {data.demographics?.incomeLevel}</p>
@@ -126,7 +128,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
         : [];
     
     return (
-      <div className="space-y-2 text-sm text-secondary-600">
+      <div className="space-y-2 text-sm text-[#CBD5E1]">
         <p><strong>Preferred Platforms:</strong> {platforms.length > 0 ? platforms.join(', ') : 'Not specified'}</p>
         <p><strong>Brand Assets:</strong> 
           {data.brandAssets?.hasLogo ? ' Logo' : ''}
@@ -139,20 +141,20 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
 
   return (
     <div className="space-y-6">
-      <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-        <h3 className="text-lg font-medium text-primary-900 mb-2">
+      <div className="bg-[#0B0F14] border border-[#1F2933] rounded-lg p-4">
+        <h3 className="text-lg font-medium text-[#F9FAFB] mb-2">
           Review Your Information
         </h3>
-        <p className="text-primary-700">
+        <p className="text-[#CBD5E1]">
           Please review all sections below. You can go back to edit any section if needed.
         </p>
       </div>
 
-      <div className="bg-white border border-secondary-200 rounded-lg p-4">
+      <div className="bg-[#0B0F14] border border-[#1F2933] rounded-lg p-4">
         <div className="flex items-center justify-between mb-4">
-          <h4 className="font-medium text-secondary-900">Completion Status</h4>
+          <h4 className="font-medium text-[#F9FAFB]">Completion Status</h4>
           <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-            isComplete ? 'bg-success-100 text-success-800' : 'bg-warning-100 text-warning-800'
+            isComplete ? 'bg-[#22C55E]/20 text-[#22C55E]' : 'bg-yellow-500/20 text-yellow-500'
           }`}>
             {completed}/{total} sections complete
           </span>
@@ -160,8 +162,8 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {sections.map((section, index) => (
-            <div key={index} className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
-              <span className="font-medium text-secondary-700">{section.name}</span>
+            <div key={index} className="flex items-center justify-between p-3 bg-[#1F2933] rounded-lg">
+              <span className="font-medium text-[#CBD5E1]">{section.name}</span>
               {renderSectionSummary(section.name, section.data)}
             </div>
           ))}
@@ -172,8 +174,8 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
       <div className="space-y-4">
         {sections.map((section, index) => (
           section.data && Object.keys(section.data).length > 0 && (
-            <div key={index} className="bg-white border border-secondary-200 rounded-lg p-4">
-              <h4 className="font-medium text-secondary-900 mb-3">{section.name}</h4>
+            <div key={index} className="bg-[#0B0F14] border border-[#1F2933] rounded-lg p-4">
+              <h4 className="font-medium text-[#F9FAFB] mb-3">{section.name}</h4>
               {section.name === 'Business Profile' && formatBusinessProfile(section.data)}
               {section.name === 'Budget & Resources' && formatBudgetResources(section.data)}
               {section.name === 'Business Goals' && formatBusinessGoals(section.data)}
@@ -182,7 +184,7 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
               {(section.name === 'Current Challenges' || 
                 section.name === 'Strengths & Opportunities' || 
                 section.name === 'Market Situation') && (
-                <p className="text-sm text-secondary-600">Information provided ✓</p>
+                <p className="text-sm text-[#CBD5E1]">Information provided ✓</p>
               )}
             </div>
           )
@@ -190,18 +192,44 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
       </div>
 
       {!isComplete && (
-        <div className="bg-warning-50 border border-warning-200 rounded-lg p-4">
+        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4">
           <div className="flex items-center">
-            <AlertCircle className="w-5 h-5 text-warning-600 mr-2" />
-            <span className="font-medium text-warning-800">Incomplete Sections</span>
+            <AlertCircle className="w-5 h-5 text-yellow-500 mr-2" />
+            <span className="font-medium text-yellow-500">Incomplete Sections</span>
           </div>
-          <p className="text-warning-700 mt-2">
+          <p className="text-[#CBD5E1] mt-2">
             Please complete all sections to get the most accurate marketing strategy recommendations.
           </p>
         </div>
       )}
 
-      <div className="border-t border-secondary-200 pt-6">
+      {/* Processing Status */}
+      {(isSubmitting || processingStatus) && (
+        <div className="bg-[#22C55E]/10 border border-[#22C55E]/30 rounded-lg p-4">
+          <h4 className="font-medium text-[#F9FAFB] mb-2">Processing Your Data</h4>
+          <div className="space-y-2">
+            {isSubmitting && (
+              <div className="flex items-center">
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[#22C55E] mr-2"></div>
+                <span className="text-sm text-[#CBD5E1]">{processingStatus || 'Processing...'}</span>
+              </div>
+            )}
+            
+            {processingResult && (
+              <div className="text-sm text-[#CBD5E1] space-y-1">
+                <p>✅ Language Detection: {processingResult.processingMetadata?.detectedLanguage}</p>
+                {processingResult.processingMetadata?.translationApplied && (
+                  <p>🌐 Translated {processingResult.processingMetadata.translatedFieldsCount} fields</p>
+                )}
+                <p>📊 Completion Rate: {processingResult.processingMetadata?.completionRate}%</p>
+                <p>⏱️ Processing Time: {processingResult.processingMetadata?.totalProcessingTime}ms</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      <div className="border-t border-[#1F2933] pt-6">
         <button
           onClick={onSubmit}
           disabled={!isComplete || isSubmitting}
@@ -210,9 +238,11 @@ export function ReviewStep({ data, onSubmit, isSubmitting }: ReviewStepProps) {
           {isSubmitting ? 'Generating Strategy...' : 'Get My Marketing Strategy Recommendations'}
         </button>
         
-        {isComplete && (
-          <p className="text-sm text-secondary-600 mt-3 text-center">
+        {isComplete && !isSubmitting && (
+          <p className="text-sm text-[#CBD5E1] mt-3 text-center">
             Your personalized marketing strategy will be generated based on the information you've provided.
+            <br />
+            <span className="text-xs">Supports Sinhala and English text with automatic translation.</span>
           </p>
         )}
       </div>

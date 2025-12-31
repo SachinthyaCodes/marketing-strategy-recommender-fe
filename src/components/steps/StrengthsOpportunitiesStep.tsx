@@ -132,27 +132,27 @@ export function StrengthsOpportunitiesStep({ data, onDataUpdate }: StrengthsOppo
   return (
     <div className="space-y-8">
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           What are your business strengths? *
         </label>
-        <p className="text-sm text-secondary-600 mb-4">
+        <p className="text-sm text-[#CBD5E1] mb-4">
           Select your key advantages that we can leverage in your marketing strategy.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {BUSINESS_STRENGTHS.map(strength => (
-            <label key={strength.id} className="flex items-start p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 cursor-pointer transition-colors">
+            <label key={strength.id} className="flex items-start p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg hover:border-[#CBD5E1]/20 cursor-pointer transition-all">
               <input
                 type="checkbox"
                 {...register('strengths')}
                 value={strength.id}
-                className="form-checkbox mt-1 flex-shrink-0"
+                className="w-4 h-4 mt-1 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2 flex-shrink-0"
               />
               <div className="ml-3">
-                <span className="font-medium text-secondary-900 block">
+                <span className="font-medium text-[#F9FAFB] block">
                   {strength.title}
                 </span>
-                <p className="text-sm text-secondary-600 mt-1">
+                <p className="text-sm text-[#CBD5E1] mt-1">
                   {strength.description}
                 </p>
               </div>
@@ -162,27 +162,27 @@ export function StrengthsOpportunitiesStep({ data, onDataUpdate }: StrengthsOppo
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           What growth opportunities do you see? *
         </label>
-        <p className="text-sm text-secondary-600 mb-4">
+        <p className="text-sm text-[#CBD5E1] mb-4">
           Select opportunities that align with your business goals and resources.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {GROWTH_OPPORTUNITIES.map(opportunity => (
-            <label key={opportunity.id} className="flex items-start p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 cursor-pointer transition-colors">
+            <label key={opportunity.id} className="flex items-start p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg hover:border-[#CBD5E1]/20 cursor-pointer transition-all">
               <input
                 type="checkbox"
                 {...register('opportunities')}
                 value={opportunity.id}
-                className="form-checkbox mt-1 flex-shrink-0"
+                className="w-4 h-4 mt-1 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2 flex-shrink-0"
               />
               <div className="ml-3">
-                <span className="font-medium text-secondary-900 block">
+                <span className="font-medium text-[#F9FAFB] block">
                   {opportunity.title}
                 </span>
-                <p className="text-sm text-secondary-600 mt-1">
+                <p className="text-sm text-[#CBD5E1] mt-1">
                   {opportunity.description}
                 </p>
               </div>
@@ -192,16 +192,16 @@ export function StrengthsOpportunitiesStep({ data, onDataUpdate }: StrengthsOppo
       </div>
 
       <div>
-        <label htmlFor="additionalNotes" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="additionalNotes" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           Additional Notes (Optional)
         </label>
         <textarea
           {...register('additionalNotes')}
           rows={4}
           placeholder="Any additional strengths, opportunities, or context you'd like to share..."
-          className="form-textarea"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
         />
-        <p className="text-xs text-secondary-500 mt-2">
+        <p className="text-xs text-[#CBD5E1]/60 mt-3">
           Include any unique aspects of your business that might impact your marketing strategy
         </p>
       </div>

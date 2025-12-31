@@ -65,23 +65,23 @@ export function PlatformsPreferencesStep({ data, onDataUpdate }: PlatformsPrefer
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Which platforms would you prefer to focus on? *
         </label>
         <div className="space-y-3">
           {PLATFORMS.map(platform => (
-            <label key={platform.name} className="flex items-start p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 cursor-pointer transition-colors">
+            <label key={platform.name} className="flex items-start p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg hover:border-[#CBD5E1]/20 cursor-pointer transition-all">
               <input
                 type="checkbox"
                 {...register('preferredPlatforms')}
                 value={platform.name}
-                className="form-checkbox mt-1"
+                className="w-4 h-4 mt-1 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
               />
               <div className="ml-3">
-                <span className="font-medium text-secondary-900">{platform.name}</span>
-                <p className="text-sm text-secondary-600 mt-1">{platform.description}</p>
+                <span className="font-medium text-[#F9FAFB]">{platform.name}</span>
+                <p className="text-sm text-[#CBD5E1] mt-1">{platform.description}</p>
               </div>
             </label>
           ))}
@@ -89,16 +89,16 @@ export function PlatformsPreferencesStep({ data, onDataUpdate }: PlatformsPrefer
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-secondary-900 mb-4">
+        <h3 className="text-lg font-medium text-[#F9FAFB] mb-4">
           Platform Experience
         </h3>
-        <p className="text-sm text-secondary-600 mb-4">
+        <p className="text-sm text-[#CBD5E1] mb-4">
           For each platform you selected, what's your experience level?
         </p>
         <div className="space-y-4">
           {PLATFORMS.map(platform => (
-            <div key={platform.name} className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg">
-              <span className="font-medium text-secondary-700">{platform.name}</span>
+            <div key={platform.name} className="flex items-center justify-between p-3 bg-[#1F2933] rounded-lg">
+              <span className="font-medium text-[#F9FAFB]">{platform.name}</span>
               <div className="flex space-x-2">
                 {EXPERIENCE_LEVELS.map(level => (
                   <label key={level.value} className="flex items-center">
@@ -107,9 +107,9 @@ export function PlatformsPreferencesStep({ data, onDataUpdate }: PlatformsPrefer
                       name={`experience-${platform.name}`}
                       value={level.value}
                       onChange={(e) => handlePlatformExperience(platform.name, e.target.value)}
-                      className="form-radio"
+                      className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 focus:ring-[#22C55E] focus:ring-2"
                     />
-                    <span className="ml-1 text-xs">{level.label}</span>
+                    <span className="ml-1 text-xs text-[#CBD5E1]">{level.label}</span>
                   </label>
                 ))}
               </div>
@@ -119,32 +119,32 @@ export function PlatformsPreferencesStep({ data, onDataUpdate }: PlatformsPrefer
       </div>
 
       <div>
-        <h3 className="text-lg font-medium text-secondary-900 mb-4">
+        <h3 className="text-lg font-medium text-[#F9FAFB] mb-4">
           Brand Assets
         </h3>
         
         <div className="space-y-4">
-          <label className="flex items-center">
+          <label className="flex items-center p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
             <input
               type="checkbox"
               {...register('brandAssets.hasLogo')}
-              className="form-checkbox"
+              className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
             />
-            <span className="ml-2">I have a business logo</span>
+            <span className="ml-3 text-[#F9FAFB]">I have a business logo</span>
           </label>
           
-          <label className="flex items-center">
+          <label className="flex items-center p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
             <input
               type="checkbox"
               {...register('brandAssets.hasBrandStyle')}
-              className="form-checkbox"
+              className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
             />
-            <span className="ml-2">I have established brand style guidelines</span>
+            <span className="ml-3 text-[#F9FAFB]">I have established brand style guidelines</span>
           </label>
         </div>
 
-        <div className="mt-4">
-          <label className="block text-sm font-medium text-secondary-700 mb-2">
+        <div className="mt-6">
+          <label className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Brand Colors (Select up to 3)
           </label>
           <div className="grid grid-cols-6 gap-2">
@@ -157,13 +157,13 @@ export function PlatformsPreferencesStep({ data, onDataUpdate }: PlatformsPrefer
                   className="sr-only"
                 />
                 <div 
-                  className="w-8 h-8 rounded-full border-2 border-white shadow-md cursor-pointer hover:scale-110 transition-transform"
+                  className="w-8 h-8 rounded-full border-2 border-[#1F2933] shadow-md cursor-pointer hover:scale-110 transition-transform hover:border-[#CBD5E1]"
                   style={{ backgroundColor: color }}
                 />
               </label>
             ))}
           </div>
-          <p className="text-xs text-secondary-500 mt-2">
+          <p className="text-xs text-[#CBD5E1]/60 mt-3">
             Choose colors that represent your brand
           </p>
         </div>

@@ -165,43 +165,43 @@ export function MarketSituationStep({ data, onDataUpdate }: MarketSituationStepP
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Seasonality Factors *
         </label>
-        <p className="text-sm text-secondary-600 mb-4">
+        <p className="text-sm text-[#CBD5E1] mb-4">
           When does your business typically perform better or face challenges? Select relevant seasonal factors that affect your business.
         </p>
         
         <div className="space-y-4">
           {Object.entries(SEASONALITY_CATEGORIES).map(([category, subcategories]) => (
-            <div key={category} className="border border-secondary-200 rounded-lg">
+            <div key={category} className="border border-[#1F2933] rounded-lg bg-[#1F2933]">
               <button
                 type="button"
                 onClick={() => toggleCategory(category)}
-                className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary-50 transition-colors"
+                className="w-full flex items-center justify-between p-4 text-left hover:bg-[#0B0F14] transition-colors rounded-lg"
               >
-                <span className="font-medium text-secondary-900">{category}</span>
+                <span className="font-medium text-[#F9FAFB]">{category}</span>
                 <ChevronDownIcon 
-                  className={`w-5 h-5 text-secondary-500 transition-transform ${
+                  className={`w-5 h-5 text-[#CBD5E1] transition-transform ${
                     expandedCategories[category] ? 'rotate-180' : ''
                   }`}
                 />
               </button>
               
               {expandedCategories[category] && (
-                <div className="border-t border-secondary-200 p-4">
+                <div className="border-t border-[#0B0F14] p-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {subcategories.map(subcategory => (
-                      <label key={subcategory} className="flex items-start p-3 border border-secondary-100 rounded hover:bg-secondary-25 cursor-pointer transition-colors">
+                      <label key={subcategory} className="flex items-start p-3 border border-[#0B0F14] rounded hover:bg-[#0B0F14] cursor-pointer transition-colors">
                         <input
                           type="checkbox"
                           checked={isSubcategorySelected(category, subcategory)}
                           onChange={(e) => handleSubcategoryChange(category, subcategory, e.target.checked)}
-                          className="form-checkbox mt-1"
+                          className="w-4 h-4 mt-1 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 rounded focus:ring-[#22C55E] focus:ring-2"
                         />
-                        <span className="ml-2 text-sm text-secondary-700">{subcategory}</span>
+                        <span className="ml-2 text-sm text-[#CBD5E1]">{subcategory}</span>
                       </label>
                     ))}
                   </div>
@@ -211,30 +211,30 @@ export function MarketSituationStep({ data, onDataUpdate }: MarketSituationStepP
           ))}
           
           {/* Other category with input field */}
-          <div className="border border-secondary-200 rounded-lg">
+          <div className="border border-[#1F2933] rounded-lg bg-[#1F2933]">
             <button
               type="button"
               onClick={() => toggleCategory('Other')}
-              className="w-full flex items-center justify-between p-4 text-left hover:bg-secondary-50 transition-colors"
+              className="w-full flex items-center justify-between p-4 text-left hover:bg-[#0B0F14] transition-colors rounded-lg"
             >
-              <span className="font-medium text-secondary-900">Other</span>
+              <span className="font-medium text-[#F9FAFB]">Other</span>
               <ChevronDownIcon 
-                className={`w-5 h-5 text-secondary-500 transition-transform ${
+                className={`w-5 h-5 text-[#CBD5E1] transition-transform ${
                   expandedCategories['Other'] ? 'rotate-180' : ''
                 }`}
               />
             </button>
             
             {expandedCategories['Other'] && (
-              <div className="border-t border-secondary-200 p-4">
-                <label className="block text-sm font-medium text-secondary-700 mb-2">
+              <div className="border-t border-[#0B0F14] p-4">
+                <label className="block text-sm font-medium text-[#F9FAFB] mb-3">
                   Please specify other seasonal factors:
                 </label>
                 <textarea
                   {...register('seasonalityOther')}
                   rows={3}
                   placeholder="Describe any other seasonal factors that affect your business..."
-                  className="form-textarea"
+                  className="w-full px-4 py-3 bg-[#0B0F14] border border-[#0B0F14] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
                 />
               </div>
             )}
@@ -243,36 +243,36 @@ export function MarketSituationStep({ data, onDataUpdate }: MarketSituationStepP
       </div>
 
       <div>
-        <label htmlFor="competitorBehavior" className="block text-sm font-medium text-secondary-700 mb-2">
+        <label htmlFor="competitorBehavior" className="block text-sm font-medium text-[#F9FAFB] mb-3">
           Current Competitor Behavior
         </label>
         <textarea
           {...register('competitorBehavior')}
           rows={4}
           placeholder="What are your competitors doing lately? Any new ads, promotions, or strategies you've noticed?"
-          className="form-textarea"
+          className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
         />
-        <p className="text-xs text-secondary-500 mt-2">
+        <p className="text-xs text-[#CBD5E1]/60 mt-3">
           This helps us understand the competitive landscape and find opportunities
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Stock/Service Availability *
         </label>
         <div className="space-y-3">
           {STOCK_AVAILABILITY_OPTIONS.map(option => (
-            <label key={option.value} className="flex items-start p-4 border border-secondary-200 rounded-lg hover:bg-secondary-50 cursor-pointer transition-colors">
+            <label key={option.value} className="flex items-start p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg hover:border-[#CBD5E1]/20 cursor-pointer transition-all">
               <input
                 type="radio"
                 {...register('stockAvailability', { required: true })}
                 value={option.value}
-                className="form-radio mt-1"
+                className="w-4 h-4 mt-1 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 focus:ring-[#22C55E] focus:ring-2"
               />
               <div className="ml-3">
-                <span className="font-medium text-secondary-900">{option.label}</span>
-                <p className="text-sm text-secondary-600 mt-1">{option.description}</p>
+                <span className="font-medium text-[#F9FAFB]">{option.label}</span>
+                <p className="text-sm text-[#CBD5E1] mt-1">{option.description}</p>
               </div>
             </label>
           ))}
@@ -280,53 +280,53 @@ export function MarketSituationStep({ data, onDataUpdate }: MarketSituationStepP
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-secondary-700 mb-4">
+        <label className="block text-sm font-medium text-[#F9FAFB] mb-4">
           Recent Price Changes *
         </label>
         <div className="space-y-3">
-          <label className="flex items-center">
+          <label className="flex items-center p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
             <input
               type="radio"
               {...register('recentPriceChanges', { required: true })}
               value="true"
-              className="form-radio"
+              className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 focus:ring-[#22C55E] focus:ring-2"
             />
-            <span className="ml-2">Yes, we've recently changed our prices</span>
+            <span className="ml-3 text-[#F9FAFB]">Yes, we've recently changed our prices</span>
           </label>
-          <label className="flex items-center">
+          <label className="flex items-center p-4 bg-[#1F2933] border border-[#1F2933] rounded-lg cursor-pointer hover:border-[#CBD5E1]/20 transition-all">
             <input
               type="radio"
               {...register('recentPriceChanges', { required: true })}
               value="false"
-              className="form-radio"
+              className="w-4 h-4 text-[#22C55E] bg-[#1F2933] border-[#CBD5E1]/30 focus:ring-[#22C55E] focus:ring-2"
             />
-            <span className="ml-2">No recent price changes</span>
+            <span className="ml-3 text-[#F9FAFB]">No recent price changes</span>
           </label>
         </div>
       </div>
 
       {recentPriceChanges === 'true' && (
         <div>
-          <label htmlFor="priceChangeDetails" className="block text-sm font-medium text-secondary-700 mb-2">
+          <label htmlFor="priceChangeDetails" className="block text-sm font-medium text-[#F9FAFB] mb-3">
             Price Change Details
           </label>
           <textarea
             {...register('priceChangeDetails')}
             rows={3}
             placeholder="Describe the price changes (increased/decreased, by how much, when, reasons)..."
-            className="form-textarea"
+            className="w-full px-4 py-3 bg-[#1F2933] border border-[#1F2933] text-[#F9FAFB] placeholder-[#CBD5E1]/50 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#22C55E] focus:border-transparent transition-all resize-none"
           />
-          <p className="text-xs text-secondary-500 mt-2">
+          <p className="text-xs text-[#CBD5E1]/60 mt-3">
             This helps us craft messaging around value proposition and positioning
           </p>
         </div>
       )}
 
-      <div className="bg-primary-50 border border-primary-200 rounded-lg p-4">
-        <h4 className="font-medium text-primary-900 mb-2">
+      <div className="bg-[#1F2933] border border-[#1F2933] rounded-lg p-6">
+        <h4 className="font-medium text-[#F9FAFB] mb-2">
           Why This Information Matters
         </h4>
-        <p className="text-sm text-primary-700">
+        <p className="text-sm text-[#CBD5E1]">
           Understanding your market situation helps us recommend the right timing for campaigns, 
           messaging strategies, and competitive positioning to maximize your marketing effectiveness.
         </p>
